@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-db:/var/lib/mysql
+  blog_rails:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/blog_rails
+      - blog_bundle_path:/bundle/vendor
+      - blog_node_modules:/blog_rails/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DB_PASSWORD: password
+      REDIS_URL: redis://redis:6379
+      GITHUB_APP_ID: 'YOUR_GITHUB_APP_ID'
+      GITHUB_APP_SECRET: 'YOUT_GITHUB_SECRET'
+      PORT: 3000
+  redis:
+    image: redis:6.2.3
+
+volumes:
+  blog_bundle_path:
+  mysql-db:
+  blog_node_modules:
