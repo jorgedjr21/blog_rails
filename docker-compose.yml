@@ -12,7 +12,7 @@ services:
       - mysql-db:/var/lib/mysql
   blog_rails:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/blog_rails
       - blog_bundle_path:/bundle/vendor
@@ -23,11 +23,10 @@ services:
       - db
       - redis
     environment:
-      DB_PASSWORD: password
-      REDIS_URL: redis://redis:6379
-      GITHUB_APP_ID: 'YOUR_GITHUB_APP_ID'
-      GITHUB_APP_SECRET: 'YOUT_GITHUB_SECRET'
-      PORT: 3000
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_PORT=3306
+      - BUNDLE_PATH=/bundle/vendor
   redis:
     image: redis:6.2.3
 
