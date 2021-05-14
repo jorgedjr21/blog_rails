@@ -13,4 +13,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require("trix")
-require("@rails/actiontext")
+require("@rails/actiontext");
+
