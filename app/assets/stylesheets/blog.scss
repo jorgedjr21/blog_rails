@@ -112,3 +112,23 @@ h1, h2, h3, h4, h5, h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+span.badge {
+  color: var(--white);
+}
+
+span.badge-other {
+  background-color: var(--secondary);
+}
+
+span.badge-development {
+  background-color: var(--teal);
+}
+
+span.badge-movies {
+  background-color: var(--blue);
+}
+
+span.badge-games {
+  background-color: var(--red);
+}

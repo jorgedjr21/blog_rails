@@ -12,48 +12,9 @@
         Read more
       </h3>
 
-      <div class="blog-post">
-        <h2 class="blog-post-title"> <a href="#"> Sample blog post </a></h2>
-        <p class="blog-post-meta">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-        <div class="row">
-          <div class="col-md-3">
-            <span><i class="fas fa-heart text-danger" data-toggle="tooltip" data-placement="top" title="Like"></i> <small>(1)</small></span>
-            <span><i class="fas fa-smile text-warning" data-toggle="tooltip" data-placement="top" title="Smile"></i> <small>(1)</small></span>
-            <span><i class="fas fa-thumbs-up text-success" data-toggle="tooltip" data-placement="top" title="Thumbs Up"></i> <small>(1)</small></span>
-          </div>
-          <div class="col-md-5 text-right">December 23, 2013 by <a href="#">Jacob</a></div>
-          <div class="col-md-4 text-right pr-5"><small><span class="badge badge-secondary">Category</span></small></div>
-        </div>
-      </div><!-- /.blog-post -->
-
-      <div class="blog-post">
-        <h2 class="blog-post-title">Another blog post</h2>
-        <p class="blog-post-meta">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-        <div class="row">
-          <div class="col-md-3">
-            <span><i class="fas fa-heart text-danger" data-toggle="tooltip" data-placement="top" title="Like"></i> <small>(1)</small></span>
-            <span><i class="fas fa-smile text-warning" data-toggle="tooltip" data-placement="top" title="Smile"></i> <small>(1)</small></span>
-            <span><i class="fas fa-thumbs-up text-success" data-toggle="tooltip" data-placement="top" title="Thumbs Up"></i> <small>(1)</small></span>
-          </div>
-          <div class="col-md-5 text-right">December 23, 2013 by <a href="#">Jacob</a></div>
-          <div class="col-md-4 text-right pr-5"><small><span class="badge badge-secondary">Category</span></small></div>
-        </div>
-
-      </div><!-- /.blog-post -->
-
-      <div class="blog-post">
-        <h2 class="blog-post-title">New feature</h2>
-        <p class="blog-post-meta">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-        <div class="row">
-          <div class="col-md-3">
-            <span><i class="fas fa-heart text-danger" data-toggle="tooltip" data-placement="top" title="Like"></i> <small>(1)</small></span>
-            <span><i class="fas fa-smile text-warning" data-toggle="tooltip" data-placement="top" title="Smile"></i> <small>(1)</small></span>
-            <span><i class="fas fa-thumbs-up text-success" data-toggle="tooltip" data-placement="top" title="Thumbs Up"></i> <small>(1)</small></span>
-          </div>
-          <div class="col-md-5 text-right">December 23, 2013 by <a href="#">Jacob</a></div>
-          <div class="col-md-4 text-right pr-5"><small><span class="badge badge-secondary">Category</span></small></div>
-        </div>
-      </div><!-- /.blog-post -->
+      <% @posts.each do |post| %>
+        <%= render partial: 'posts/blog_post', locals: { post: post } %>
+      <% end %>
 
       <nav class="blog-pagination">
         <ul class="pagination">
