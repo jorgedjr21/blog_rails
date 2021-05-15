@@ -3,7 +3,7 @@ module Admin
     before_action :set_authors, only: :new
 
     def index
-      @posts = Post.all
+      @posts = Post.eager_load(:author).all
     end
 
     def new
