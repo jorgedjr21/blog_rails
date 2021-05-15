@@ -27,10 +27,10 @@
             <td><%= post.category %></td>
             <td>5</td>
             <td>
-              <a href="<%= admin_post_path(@post.id) %>">Edit</a>
+              <a href="<%= admin_post_path(post.id) %>">Edit</a>
             </td>
             <td>
-              <%= link_to 'Delete', admin_post_path(@post.id), method: :delete %>
+              <%= link_to 'Delete', admin_post_path(post.id), method: :delete %>
             </td>
           </tr>
 

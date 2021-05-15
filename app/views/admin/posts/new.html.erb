@@ -5,7 +5,9 @@
   <div class="col-md-8 mx-auto">
     <div class="card">
       <div class="card-body">
-        <%= render partial: 'form', locals: { post: @post } %>
+        <%= simple_form_for @post, url: admin_posts_path do |f| %>
+          <%= render partial: 'form', locals: { f: f, post: @post, authors: @authors } %>
+        <% end %>
       </div>
     </div>
   </div>

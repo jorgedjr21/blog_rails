@@ -55,6 +55,7 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end

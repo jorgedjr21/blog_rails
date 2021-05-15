@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+if Author.count <= 1
+  p 'Seeding authors'
+  5.times do
+    FactoryBot.create(:author)
+  end
+end
