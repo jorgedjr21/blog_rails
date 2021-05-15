@@ -8,5 +8,5 @@ class Post < ApplicationRecord
 
   enumerize :category, in: CATEGORIES, default: :other
 
-  validates :content, :title, presence: true
+  validates :content, :title, :description, :category, presence: true
 end
