@@ -1,6 +1,6 @@
 module Admin
   class PostsController < Admin::ApplicationController
-    before_action :set_authors, only: :new
+    before_action :set_post, only: %i[edit update]
 
     def index
       @posts = Post.eager_load(:author).all
@@ -13,10 +13,21 @@ module Admin
     def create
       @post = Post.new(post_params)
       if @post.save
-        redirect_to admin_posts_path, alert: 'Post created'
+        redirect_to admin_posts_path, success: 'Post created'
       else
         flash.now[:danger] = 'Oops, something went wrong!'
         render :new
+      end
+    end
+
+    def edit; end
+
+    def update
+      if @post.update(post_params)
+        redirect_to admin_posts_path, success: 'Post updated!'
+      else
+        flash.now[:danger] = 'Oops, something went wrong!'
+        render :edit
       end
     end
 
@@ -26,8 +37,8 @@ module Admin
       params.require(:post).permit(:title, :description, :category, :author_id, :content)
     end
 
-    def set_authors
-      @authors = Author.all
+    def set_post
+      @post = Post.find(params[:id])
     end
   end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index show]
   namespace :admin do
     resources :posts
+    root to: 'posts#index'
   end
 
   root to: 'posts#index'

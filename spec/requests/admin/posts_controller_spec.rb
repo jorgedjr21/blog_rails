@@ -47,4 +47,50 @@ RSpec.describe "Posts admin section", :type => :request do
       it { is_expected.to render_template(:new) }
     end
   end
+
+  context 'PUT /admin/posts/:id' do
+    let!(:post) { create(:post) }
+    subject { put "/admin/posts/#{post.id}", params: params }
+
+    context 'with valid params' do
+      let(:params) {
+        {
+          post: {
+            title: 'New Title',
+            description: 'new Description'
+          }
+        }
+      }
+
+      it 'must update the existing post' do
+        expect {
+          subject
+          post.reload
+        }.to change { post.title }.from(post.title).to('New Title')
+         .and change { post.description }.from(post.description).to('new Description')
+      end
+
+      it { is_expected.to redirect_to(admin_posts_path) }
+    end
+
+    context 'with invalid params' do
+      let(:params) {
+        {
+          post: {
+            title: '',
+            description: ''
+          }
+        }
+      }
+
+      it 'must not update the existing post' do
+        expect {
+          subject
+          post.reload
+        }.not_to change { post }
+      end
+
+      it { is_expected.to render_template(:edit) }
+    end
+  end
 end
