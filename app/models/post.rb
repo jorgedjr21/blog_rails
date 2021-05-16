@@ -5,6 +5,7 @@ class Post < ApplicationRecord
 
   belongs_to :author
   has_rich_text :content
+  has_many :comments
 
   enumerize :category, in: CATEGORIES, default: :other
 
