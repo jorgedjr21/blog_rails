@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Blog posts', type: :feature do
   let!(:post) { create(:post) }
+  let!(:featured) { create(:post) }
 
   before do
     visit '/'
