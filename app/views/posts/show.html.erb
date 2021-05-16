@@ -1,0 +1,15 @@
+<div class="blog-post border-bottom pb-4 mb-4">
+  <p class="text-left"> <a href="<%= root_path %>"> <i class="fas fa-arrow-left"></i> Back</a></p>
+  <h2 class="blog-post-title"> <%= @post.title %></h2>
+  <p class="blog-post-meta"><%= @post.description %> </p>
+  <p><%= @post.content %> </p>
+  <div class="row">
+    <div class="col-md-3">
+      <span><i class="fas fa-heart text-danger" data-toggle="tooltip" data-placement="top" title="Like"></i> <small>(1)</small></span>
+      <span><i class="fas fa-smile text-warning" data-toggle="tooltip" data-placement="top" title="Smile"></i> <small>(1)</small></span>
+      <span><i class="fas fa-thumbs-up text-success" data-toggle="tooltip" data-placement="top" title="Thumbs Up"></i> <small>(1)</small></span>
+    </div>
+    <div class="col-md-7 text-center"><%= time_ago_in_words @post.created_at %> by <strong><%= @post.author.name %></strong> </div>
+    <div class="col-md-2 text-right pr-5"><small><span class="badge badge-<%= @post.category %>"><%= @post.category %> </span></small></div>
+  </div>
+</div><!-- /.blog-post -->
