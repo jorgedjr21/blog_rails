@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Posts admin section", :type => :request do
+
   context 'GET /admin/posts/new' do
     subject { get '/admin/posts/new' }
 
@@ -91,6 +92,15 @@ RSpec.describe "Posts admin section", :type => :request do
       end
 
       it { is_expected.to render_template(:edit) }
+    end
+  end
+
+  context 'DELETE /admin/posts/:id' do
+    let!(:post) { create(:post) }
+    subject { delete "/admin/posts/#{post.id}" }
+
+    it 'must destroy the post' do
+      expect { subject }.to change(Post, :count).by(-1)
     end
   end
 end

@@ -1,6 +1,6 @@
 module Admin
   class PostsController < Admin::ApplicationController
-    before_action :set_post, only: %i[edit update]
+    before_action :set_post, only: %i[edit update destroy]
 
     def index
       @posts = Post.eager_load(:author).all
@@ -29,6 +29,16 @@ module Admin
         flash.now[:danger] = 'Oops, something went wrong!'
         render :edit
       end
+    end
+
+    def destroy
+      if @post.destroy
+        flash[:success] = 'Post deleted!'
+      else
+        flash[:danger] = "Error while deleting post, please try again: #{@post.destroy}"
+      end
+
+      redirect_to admin_posts_path
     end
 
     private
