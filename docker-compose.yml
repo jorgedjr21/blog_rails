@@ -29,6 +29,7 @@ services:
       - DB_PASSWORD=root
       - DB_PORT=3306
       - BUNDLE_PATH=/bundle/vendor
+      - REDIS_URL=redis://redis:6379/1
   redis:
     image: redis:6.2.3
 

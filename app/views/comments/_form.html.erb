@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Comment</h5>
+        <%= simple_form_for comment, id: dom_id(comment), url:  post_comments_path(post_id: post.id) do |f| %>
+          <%= f.input :post_id, as: :hidden %>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :name, class: 'input-sm' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.input :content %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <%= f.button :submit, 'Comment', class: 'btn btn-success' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

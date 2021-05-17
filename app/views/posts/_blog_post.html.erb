@@ -3,7 +3,7 @@
   <p class="blog-post-meta"><%= post.description %> </p>
   <div class="row">
     <div class="col-md-2">
-      <span data-toggle="tooltip" data-placement="top" title="Comments"><i class="fas fa-comment"></i> <small>(1)</small></span>
+      <span data-toggle="tooltip" data-placement="top" title="Comments"><i class="fas fa-comment"></i> <small>(<%= post.comments.count%>)</small></span>
     </div>
     <div class="col-md-8 text-center"><%= time_ago_in_words post.created_at %> by <strong><%= post.author.name %></strong> </div>
     <div class="col-md-2 text-right pr-5"><small><span class="badge badge-<%= post.category %>"><%= post.category %> </span></small></div>

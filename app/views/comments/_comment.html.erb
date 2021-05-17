@@ -1,0 +1,10 @@
+<%= turbo_frame_tag dom_id(comment) do %>
+  <% if comment.id.present? %>
+    <div class="row">
+      <div class="col-md-12 border-bottom pb-2 mb-4">
+        <p class="text-muted p-0"><%= comment.content %> </p>
+        <p class="small"> By <strong><%= comment.name %></strong>, &nbsp;&nbsp;&nbsp; <%= comment.created_at.to_formatted_s(:short) %> </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

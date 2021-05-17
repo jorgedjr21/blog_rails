@@ -13,3 +13,32 @@
     <div class="col-md-2 text-right pr-5"><small><span class="badge badge-<%= @post.category %>"><%= @post.category %> </span></small></div>
   </div>
 </div><!-- /.blog-post -->
+
+<div id="comments">
+  <div class="row mb-4">
+    <div class="col-md-12 text-center mb-2">
+      <h3>Do your comment</h3>
+    </div>
+    <div class="col-md-12">
+      <%= turbo_frame_tag "comment_form" do %>
+        <%= render "comments/form", comment: @comment, post: @post %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <h3>Comments</h3>
+    </div>
+  </div>
+
+  <%= turbo_stream_from 'comments' %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= turbo_frame_tag 'comments' do %>
+        <%= render @comments %>
+      <% end %>
+    </div>
+  </div>
+</div>
